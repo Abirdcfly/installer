@@ -33,6 +33,10 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            {{- if .Values.kubernetes_min_version }}
+            - name: KUBERNETES_MIN_VERSION
+              value: {{ .Values.kubernetes_min_version }}
+            {{- end}}
             - name: OPERATOR_NAME
               {{- if .Values.operator.operatorName }}
               value: {{- .Values.operator.operatorName }}
@@ -109,6 +113,10 @@ spec:
             {{- toYaml .Values.operator.resources | nindent 12 }}
 
         - env:
+            {{- if .Values.kubernetes_min_version }}
+            - name: KUBERNETES_MIN_VERSION
+              value: {{ .Values.kubernetes_min_version }}
+            {{- end }}
             - name: SYSTEM_NAMESPACE
               valueFrom:
                 fieldRef:
@@ -229,6 +237,10 @@ spec:
       {{- end }}
       containers:
         - env:
+            {{- if .Values.kubernetes_min_version }}
+            - name: KUBERNETES_MIN_VERSION
+              value: {{ .Values.kubernetes_min_version }}
+            {{- end}}
             - name: SYSTEM_NAMESPACE
               valueFrom:
                 fieldRef:

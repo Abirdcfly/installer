@@ -127,3 +127,5 @@ triggers:
     image: "hyperledgerk8s/tekton-triggers-webhook:v0.22.0"
   interceptors:
     image: "hyperledgerk8s/tekton-triggers-interceptors:v0.22.0"
+
+kubernetes_min_version: ""
