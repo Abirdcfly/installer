@@ -33,7 +33,7 @@ jobs:
         load_all_images kind /tmp/images/
     - name: Installation test
       run: |
-        ls -ltrha /workspace/fabric-installer
+        ls -ltrha /workspaces/fabric-installer
         export RUN_IN_TEST=YES
         make e2e
     - name: Cache images
