@@ -33,6 +33,7 @@ jobs:
         load_all_images kind /tmp/images/
     - name: Installation test
       run: |
+        ls -ltrha /workspace/fabric-installer
         export RUN_IN_TEST=YES
         make e2e
     - name: Cache images
@@ -42,6 +43,7 @@ jobs:
         save_all_images /tmp/images/ /tmp/all.image.list
         ls -ltrha /tmp/
         ls -ltrha /tmp/images/
+        ls -ltrha /workspace/fabric-installer
         echo "upload_image=${UPLOAD_IMAGE}" >> $GITHUB_OUTPUT
     - name: Upload cache images
       if: steps.cache-image.outputs.upload_image == 'YES'
